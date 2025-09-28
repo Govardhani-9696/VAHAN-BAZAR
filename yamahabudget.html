@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Vahaan Bazar</title>
+<style>
+:root{
+    --accent:#d33;         /* red accent for apply button / scooter */
+    --muted:#f5f5f6;
+    --card:#fff;
+    --text:#222;
+    --glass: rgba(0,0,0,0.05);
+    --radius:12px;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+
+  body{
+    margin:0;
+    background:linear-gradient(#fafafa,#fff);
+    color:var(--text);
+    min-height:100vh;
+    display:flex;
+    gap:20px;
+    
+    padding-top:150px;
+    padding-right:25px;
+    padding-left:500px ;
+    padding-bottom:100px ;
+
+  }
+
+  /* Layout */
+  .layout{
+    display:flex;
+    width:100%;
+    gap:20px;
+    align-items:flex-start;
+  }
+  .sidebar{
+    width:320px;
+    background:var(--card);
+    border-radius:var(--radius);
+    box-shadow:0 6px 18px rgba(15,15,15,0.06);
+    padding:18px;
+  }
+
+  .main{
+    flex:1;
+    min-height:400px;
+  }
+
+  h3{ margin:0 0 12px 0; font-size:18px; }
+
+  /* Sort buttons row */
+  .sort-row{
+    display:flex;
+    gap:10px;
+    margin-bottom:14px;
+    flex-wrap:wrap;
+  }
+  .sort-btn{
+    background:var(--muted);
+    border-radius:10px;
+    padding:12px 14px;
+    border:1px solid transparent;
+    cursor:pointer;
+    font-weight:600;
+  }
+  .sort-btn.active{
+    background:#e9f7ef;
+    border-color:rgba(0,128,64,0.08);
+  }
+
+  /* Filter group */
+  .filter-group{ margin-bottom:18px; }
+  label{display:block; font-size:13px; margin-bottom:6px; color:#333; font-weight:600;}
+
+  /* Budget slider */
+  .slider-wrap{
+    padding:12px;
+    background:var(--glass);
+    border-radius:10px;
+  }
+  input[type=range]{
+    width:100%;
+    appearance:none;
+    height:6px;
+    background:#dfe;
+    border-radius:999px;
+  }
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none;
+    width:20px;height:20px;border-radius:50%; background:var(--accent); box-shadow:0 4px 8px rgba(0,0,0,0.12);
+  }
+
+  .budget-values{ display:flex; justify-content:space-between; align-items:center; margin-top:8px; font-size:13px; }
+  .budget-inputs{ display:flex; gap:8px; margin-top:10px; }
+  .budget-inputs input[type=number]{ flex:1; padding:8px; border-radius:8px; border:1px solid #e6e6e6; background:#fff; }
+
+  /* Body style pill */
+  .pill{ padding:10px 12px; border-radius:12px; display:inline-block; background:var(--muted); margin-right:8px; cursor:pointer; }
+
+  /* Product card to right */
+  .product-card{
+    background:var(--card);
+    border-radius:14px;
+    padding:14px;
+    width:320px;
+    box-shadow:0 8px 24px rgba(10,10,10,0.04);
+    display:flex;
+    gap:12px;
+    align-items:center;
+  }
+  .product-img{
+    width:140px;
+    height:90px;
+    border-radius:10px;
+    background:#ddd;
+    object-fit:cover; /* reduces image fit */
+    display:block;
+  }
+  .product-details{ flex:1; }
+  .title{ font-weight:700; font-size:16px; margin-bottom:6px; }
+  .meta{ font-size:13px; color:#666; margin-bottom:8px; }
+
+  /* Action buttons */
+  .actions{ display:flex; gap:8px; }
+  .icon-btn{
+    padding:8px 10px; border-radius:10px; border:1px solid #eee; background:transparent; cursor:pointer; display:inline-flex; align-items:center; gap:8px;
+  }
+  .icon-btn.like.active{ background:rgba(255,0,60,0.08); border-color:rgba(255,0,60,0.12); }
+  .icon-btn svg{ width:18px; height:18px; }
+
+    
+    
+</style>
+<body>
+
+        
+<div class="layout">
+  <!-- Sidebar: filters -->
+  <aside class="sidebar" aria-label="Filters">
+    <h3>Sort by</h3>
+    <div class="sort-row" role="tablist" aria-label="Sort options">
+      <button class="sort-btn active" data-sort="popular">Popularity</button>
+      <button class="sort-btn" data-sort="price-low">Price ↓</button>
+      <button class="sort-btn" data-sort="price-high">Price ↑</button>
+      <button class="sort-btn" data-sort="mileage">Mileage</button>
+    </div>
+
+    <div class="filter-group">
+      <label for="budgetRange">Budget</label>
+      <div class="slider-wrap">
+        <input id="budgetRange" type="range" min="0" max="6000000" step="10000" value="30000" />
+        <div class="budget-values">
+          <span>Up to ₹<span id="budgetLabel">30,000</span></span>
+          <span>60+ Lakh</span>
+        </div>
+        <div class="budget-inputs">
+          <input id="minBudget" type="number" min="0" placeholder="Min" />
+          <input id="maxBudget" type="number" min="0" placeholder="Max" />
+        </div>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <label>Body Style</label>
+      <div>
+        <span class="pill" data-style="scooter">Scooter</span>
+        <span class="pill" data-style="bike">Motorbike</span>
+        <span class="pill" data-style="electric">Electric</span>
+      </div>
+    </div>
+
+    <div class="filter-group" style="margin-top:18px;">
+      <label>Extra</label>
+      <div style="display:flex;gap:8px;">
+        <label style="font-weight:600;"><input type="checkbox" /> Second hand</label>
+        <label style="font-weight:600;"><input type="checkbox" /> Certified</label>
+      </div>
+    </div>
+  </aside>
+
+  </div>
+
+  
+
+    
+  </body>
+  </head>
+  </html>
