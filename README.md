@@ -18,3 +18,39 @@ Uniqueness:
 Impact:
 ----------------------
 "Enables faster decision-making, increases trust in vehicle transactions, and promotes accessibility for a wider audience."
+
+Features:
+------------------------
+
+1. Smart Vehicle Search & Filters – Browse bikes, scooters, and EVs with filters by brand, price, fuel type, and condition (new/second-hand).
+
+
+2. Detailed Vehicle Listings – Each listing includes images, specifications, pricing, and comparison options.
+
+
+3. Showroom & Dealer Integration – Explore authorized showrooms, locate nearby dealers, and book test rides.
+
+
+4. User-Friendly Interface – Simple, responsive design for easy navigation across devices.
+
+
+5. Booking & Contact Options – Direct booking requests, inquiries, and test ride scheduling.
+
+TECH STACK USED:
+----------------------------
+
+Frontend:
+------------
+HTML
+CSS
+Java Script
+
+TEAM MEMBERS CONTRIBUTION:
+-------------------------------
+1.GOVARDHINI MADDINA-DEALS GITHUB IMPLEMENTATION
+2.K.MONIKA SATYA DURGA-DEALS WITH FRONT-END (DESIGN WEBSITE)
+3.K.BHUVANESWARI-DEALS WITH FRONT-END(DESIGN WEBSITE)
+4.K.NAGASWETHA-PPT DESIGN
+5.K.RAMYA RANI-DESIGN WEBSITE,VEDIO EDITING
+
+  
